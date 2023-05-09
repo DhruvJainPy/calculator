@@ -1,0 +1,12 @@
+.bg-light {
+  background-color: #e0e0e0 !important;
+}
+.bg-warning {
+  background-color: #f5923e !important;
+}
+.bg-dark {
+  background-color: #858694 !important;
+}
+.border-dark {
+  border: 1px solid gray !important;
+}
