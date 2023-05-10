@@ -1,13 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import ValueContext from "../Context/ValueContext";
 const Button = (props) => {
   const { button } = props;
-  const [operator, setOperator] = useState("");
-  const { setNum, setNeg, setNull, operation, result } =
+  const operator = [3, 4, 8, 12, 16];
+  const { setNum, setNeg, setNull, operation, result, disabled } =
     useContext(ValueContext);
   const handleClick = () => {
     const op = [5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18];
-    const operator = [3, 4, 8, 12, 16];
+    let operator = [3, 4, 8, 12, 16];
     if (button.id === 1) {
       setNull();
     } else if (button.id === 2) {
@@ -15,7 +15,6 @@ const Button = (props) => {
     } else if (op.includes(button.id)) {
       setNum(button.title);
     } else if (operator.includes(button.id)) {
-      setOperator(button.title);
       operation(button.title);
     } else if (button.id === 20) {
       result();
@@ -31,10 +30,14 @@ const Button = (props) => {
         button.id % 4 === 0 ? "bg-warning text-white" : "bg-light text-dark"
       }`}
       style={{ cursor: "pointer" }}
-      disabled={operator !== "" && operator.includes(button.id)}
       onClick={handleClick}
     >
-      <p className="display-5">{button.title}</p>
+      <button
+        className="display-5 bg-transparent border-0 p-2"
+        disabled={disabled && operator.includes(button.id)}
+      >
+        {button.title}
+      </button>
     </div>
   );
 };
